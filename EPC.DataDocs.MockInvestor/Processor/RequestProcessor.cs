@@ -91,7 +91,7 @@ namespace EPC.DataDocs.MockInvestor.Processor
                 if (!string.IsNullOrEmpty(transactionId))
                 {
                     _Logger.LogInformation("POST - api/webhook - Transaction ID - " + transactionId, string.Empty, _ClassName);
-                    if (_WebhookBody.eventType == "CreateRequest")
+                    if (String.Compare(_WebhookBody.eventType, "CreateRequest", StringComparison.OrdinalIgnoreCase) == 0)
                     {
                         //Call GetRequest to get loan package from transaction id
                         var requestData = PartnerAPIWrapper.GetRequest(transactionId);
